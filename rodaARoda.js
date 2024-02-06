@@ -47,3 +47,54 @@ for (var posicao = 0; posicao < palavraMisteriosa.length; posicao++) {
 
 console.log(letrasDescobertas); // Verifica se as letras foram inicializadas corretamente
 
+// segunda parte //
+
+//coloca aqui a palavra sorteada aleatória 
+var palavraMisteriosa = "agiota"; //<<<<<<<<<<<----- Troca aqui
+var letrasDescobertas = [];
+
+// Inicializar letrasDescobertas com underlines
+for (var i = 0; i < palavraMisteriosa.length; i++) {
+    letrasDescobertas.push("_");
+}
+
+// Função para verificar se a letra está na palavra
+function verificarLetra() {
+    var letra = document.getElementById("entradaDaLetra").value.toLowerCase();
+    var encontrada = false;
+
+    for (var i = 0; i < palavraMisteriosa.length; i++) {
+        if (palavraMisteriosa[i] === letra) {
+            letrasDescobertas[i] = letra;
+            encontrada = true;
+        }
+    }
+
+    atualizarPalavraDescoberta();
+
+    if (encontrada) {
+        document.getElementById("mensagem").innerText = "A letra '" + letra + "' está na palavra!";
+    } else {
+        document.getElementById("mensagem").innerText = "A letra '" + letra + "' não está na palavra.";
+    }
+
+    // Verificar se todas as letras foram descobertas
+    if (letrasDescobertas.indexOf("_") === -1) {
+        document.getElementById("mensagem").innerText = "Parabéns! Você adivinhou a palavra!";
+    }
+}
+
+// Função para atualizar a exibição da palavra descoberta na tela
+function atualizarPalavraDescoberta() {
+    document.getElementById("palavraDescoberta").innerText = letrasDescobertas.join(" ");
+}
+
+// Exibir palavra inicialmente
+atualizarPalavraDescoberta();
+
+
+
+
+
+
+
