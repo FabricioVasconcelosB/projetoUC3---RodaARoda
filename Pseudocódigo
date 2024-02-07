@@ -1,10 +1,9 @@
 // Criar uma lista de palavras e dicas
-palavras=[lista]
- 
+palavras = [lista]
 
 // Escolher uma palavra e uma dica aleatoriamente
 indiceAleatorio = número inteiro aleatório entre 0 e o tamanho da lista de palavras - 1
-palavraEDica =palavras[indiceAleatorio]
+palavraEDica = palavras[indiceAleatorio]
 palavraAleatoria = palavraEDica[0] // Extrair a palavra aleatória
 dica = palavraEDica[1] // Extrair a dica correspondente à palavra
 mostrar na tela "Palavra aleatória: " + palavraAleatoria
@@ -43,6 +42,23 @@ função verificarLetra()
   // Verificar se todas as letras foram descobertas
   se não existir "_" na lista letrasDescobertas, então
     mostrar no elemento "mensagem" o texto "Parabéns! Você adivinhou a palavra!"
+  fim do se
+fim da função
+
+// Função para chutar a palavra completa
+função chutarPalavra()
+  palavraChutada = obter o valor do elemento "chutarPalavra" e converter para minúscula
+  
+  se palavraChutada for igual a palavraMisteriosa, então
+    limpar o valor do elemento "chutarPalavra"
+    // Se a palavra chutada estiver correta, preencha os blocos acima com a palavra
+    para cada índice de 0 até o tamanho da palavraMisteriosa - 1, faça
+      letrasDescobertas[índice] <- palavraMisteriosa[índice]
+    fim do para
+    chamar a função atualizarPalavraDescoberta()
+    mostrar no elemento "mensagem" o texto "Parabéns! Você acertou a palavra!"
+  senão
+    mostrar no elemento "mensagem" o texto "Que pena! Tente novamente."
   fim do se
 fim da função
 
