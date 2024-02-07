@@ -5,22 +5,39 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Roda a Roda Senac</title>
 <style>
-    h1{
-        font: 100; color: rgb(0, 0, 0);
+    p{
+        font-size: small;
+        font-family: sans-serif;
     }
+    
+    div#div{
+        color: rgb(0, 0, 0);
+        font-size: xxx-large;
+        font-family: Impact;
+    }
+
+    label#entradaDaLetra{
+        
+        font-size: small;
+        font-family: sans-serif;
+    }
+
     body{
-        background-color: rgb(196, 246, 208);
+        background-color: rgb(255, 255, 255);
         text-align: center;
     }
     div#dica{
        margin-top: 15px;
+       font-family: sans-serif;
+       font-size: small;
     }
 </style>
 </head>
 <body>
-    <h1>RODA RODA Senac</h1>
+    <p>Serviço Nacional de Aprendizagem Comercial</p>
+    <div id="div">RODA RODA</div>
 <div>
-    <label for="entradaDaLetra">Digite uma letra:</label>
+    <label id="entradaDaLetra">Digite uma letra:</label>
     <input type="text" id="entradaDaLetra">
     <button onclick="verificarLetra()">Rodar</button>
 </div>
@@ -28,6 +45,6 @@
 <div id="dica"></div> <!-- Elemento para exibir a dica -->
 <div id="mensagem"></div>
 
-<script src="test.js"></script>
+<script src="atualizado.js"></script>
 </body>
 </html>

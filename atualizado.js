@@ -58,10 +58,10 @@ var palavras = [
       atualizarPalavraDescoberta();
   
       if (encontrada) {
-          document.getElementById("mensagem").innerText = "A letra '" + letra + "' está na palavra!";
+          document.getElementById("mensagem").innerHTML = "A letra <strong>'" + letra + "' </strong> está na palavra!";
           document.getElementById("entradaDaLetra").value = "";
       } else {
-          document.getElementById("mensagem").innerText = "A letra '" + letra + "' não está na palavra.";
+          document.getElementById("mensagem").innerHTML = "A letra <strong> '" + letra + "' </strong> não está na palavra.";
       }
   
       // Verificar se todas as letras foram descobertas
@@ -80,4 +80,4 @@ var palavras = [
   atualizarPalavraDescoberta();
   
   // Exibir a dica
-  document.getElementById("dica").innerText = "Dica: " + dica;
+  document.getElementById("dica").innerHTML = "Dica: <strong> " + dica;
