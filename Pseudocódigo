@@ -1,0 +1,58 @@
+// Criar uma lista de palavras e dicas
+palavras=[lista]
+ 
+
+// Escolher uma palavra e uma dica aleatoriamente
+indiceAleatorio = número inteiro aleatório entre 0 e o tamanho da lista de palavras - 1
+palavraEDica =palavras[indiceAleatorio]
+palavraAleatoria = palavraEDica[0] // Extrair a palavra aleatória
+dica = palavraEDica[1] // Extrair a dica correspondente à palavra
+mostrar na tela "Palavra aleatória: " + palavraAleatoria
+
+// Inicializar a palavra misteriosa e as letras descobertas
+palavraMisteriosa = palavraAleatoria
+letrasDescobertas = lista vazia
+
+// Inicializar letrasDescobertas com espaços em branco "_" que representam as letras ainda não descobertas
+para cada posição de 0 até o tamanho da palavraMisteriosa - 1, faça
+  adicionar "_" na lista letrasDescobertas
+fim do para
+
+mostrar na tela letrasDescobertas // Verificar se as letras foram inicializadas corretamente
+
+// Função para verificar se a letra está na palavra
+função verificarLetra()
+  letra = obter o valor do elemento "entradaDaLetra" e converter para minúscula
+  encontrada <- falso
+
+  para cada índice de 0 até o tamanho da palavraMisteriosa - 1, faça
+    se palavraMisteriosa[índice] for igual a letra, então
+      letrasDescobertas[índice] <- letra
+      encontrada <- verdadeiro
+    fim do se
+  fim do para
+
+  chamar a função atualizarPalavraDescoberta()
+
+  se encontrada for verdadeiro, então
+    mostrar no elemento "mensagem" o texto "A letra '" + letra + "' está na palavra!"
+  senão
+    mostrar no elemento "mensagem" o texto "A letra '" + letra + "' não está na palavra."
+  fim do se
+
+  // Verificar se todas as letras foram descobertas
+  se não existir "_" na lista letrasDescobertas, então
+    mostrar no elemento "mensagem" o texto "Parabéns! Você adivinhou a palavra!"
+  fim do se
+fim da função
+
+// Função para atualizar a exibição da palavra descoberta na tela
+função atualizarPalavraDescoberta()
+  mostrar no elemento "palavraDescoberta" o texto letrasDescobertas unidas por " "
+fim da função
+
+// Exibir palavra inicialmente
+chamar a função atualizarPalavraDescoberta()
+
+// Exibir a dica
+mostrar no elemento "dica" o texto "Dica: " + dica
