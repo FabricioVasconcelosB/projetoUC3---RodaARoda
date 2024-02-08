@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PROJECT UC3</title>
+<style>
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    border: 4px solid #ffbd80; /* Adiciona uma borda ao redor do conteúdo */
+    padding: 15px; /* Adiciona espaço interno ao redor do conteúdo */
+    width: 35%; /* Largura do retângulo */
+    margin: auto; /* Centraliza horizontalmente */
+    background-color: rgb(58, 137, 255);
+    box-shadow: inset 0 0 0 200px rgb(223, 108, 0); /* Cor interna da borda */
+    text-align: center;
+        
+        
+    }
+
+    div#d {
+        background-color: #ffbd80; /* Cor de fundo do retângulo */
+        padding: 5px 10px; /* Espaçamento interno do retângulo */
+        display: inline-block; /* Permite que o retângulo se ajuste ao conteúdo */
+        border-radius: 15px; /* Adiciona bordas arredondadas ao retângulo */
+        font-size: xxx-large;
+        color: rgb(0, 0, 0);
+        border: 2px solid #ffbd80;
+        font-family: 'Roboto', sans-serif; /* Aplicando a fonte Roboto */
+    }
+
+    label{
+        background-color: #ffbd80; /* Cor de fundo do retângulo */
+        padding: 5px 10px; /* Espaçamento interno do retângulo */
+        border-radius: 15px; /* Adiciona bordas arredondadas ao retângulo */display: inline-block; /* Permite que o retângulo se ajuste ao conteúdo */
+        font-size: medium;
+        border: 2px solid #ffbd80;
+        color: rgb(0, 0, 0);
+        font-family: 'Roboto', sans-serif; /* Aplicando a fonte Roboto */
+    }
+    
+    button{
+        margin-top: 15px;
+        background-color:rgb(58, 137, 255);
+        border: 2px solid #ffbd80;
+        color: #000000;
+        padding: 4px 4px;
+        font-size: 13px;
+        cursor: pointer;
+        border-radius: 10px;
+        transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+    }
+
+    input{
+        background-color: #ffbd80;
+        border-radius: 15px;
+        border: 2px solid #ffbd80;
+    }
+    
+    div#dica {
+       margin-top: 15px;
+       background-color: #ffbd80;
+       border: 2px solid #ffbd80;
+       border-radius: 10px;
+       padding: 4px 4px;
+       display: inline-block;
+       font-family: 'Roboto', sans-serif; /* Aplicando a fonte Roboto */
+       
+    }
+
+    div#mensagem{
+        margin-top: 20px;
+        border-radius: 20px;
+        background-color: rgb(58, 137, 255);
+        padding: 4px 150px;
+        font-family: 'Roboto', sans-serif; /* Aplicando a fonte Roboto */
+    }
+
+    div#palavraDescoberta{
+        margin-top: 10px;
+        border-radius: 10px;
+        background-color: rgb(58, 137, 255);
+        border: 4px solid #ffbd80; /* Borda do quadradinho */
+        font-family: 'Roboto', sans-serif; /* Aplicando a fonte Roboto */
+    }
+</style>
+</head>
+<body>
+<div id="d">RODA RODA SENAC</div>
+<div>
+    <label>Digite uma letra:</label>
+    <input type="text" id="entradaDaLetra">
+    <button onclick="verificarLetra()">Verificar</button>
+</div>
+<div>
+    <label>Palavra Completa:</label>
+    <input type="text" id="chutarPalavra">
+    <button onclick="chutarPalavra()">Chutar</button>
+</div>
+<div id="palavraDescoberta"></div>
+<div id="dica"></div> <!-- Elemento para exibir a dica -->
+<div id="mensagem"></div>
+
+<script>
+    var palavras = [
+        [['f','l','o','r','e','s','t','a'], ['Árvores']],
+        [['t','e','l','e','f','o','n','e'], ['Ligações']],
+        [['l','u','a'], ['Satélite']],
+        [['m','o','n','t','a','n','h','a'], ['Pico']],
+        [['b','a','n','a','n','a'], ['Amarelo']],
+        [['c','a','n','e','t','a'], ['Escrever']],
+        [['g','i','r','a','f','a'], ['Pescoço']],
+        [['f','o','g','o'], ['Queimar']],
+        [['e','s','p','e','l','h','o'], ['Reflexo']],
+        [['p','i','a','n','o'], ['Teclas']],
+        [['t','i','g','r','e'], ['Listras']],
+        [['m','a','ç','ã'], ['Fruta']],
+        [['r','e','l','o','g','i','o'], ['Tempo']],
+        [['e','l','e','f','a','n','t','e'], ['Tromba']],
+        [['e','s','c','o','l','a'], ['Educação']],
+        [['l','á','p','i','s'], ['Grafite']],
+        [['d','i','n','h','e','i','r','o'], ['Moeda']],
+        [['c','a','d','e','i','r','a'], ['Assento']],
+        [['s','o','l'], ['Brilho']],
+        [['b','a','r','c','o'], ['Navegar']],
+        [['a','g','u','a'], ['Beber']],
+        [['c','a','c','h','e','c','o','l'], ['Aquecer']],
+        [['p','a','p','e','l'], ['Escrita']],
+        [['v','e','r','m','e','l','h','o'], ['Cor']],
+        [['c','o','r','a','ç','a','o'], ['Amor']]
+    ];
+    // Escolha aleatória de uma palavra e sua dica
+    var indiceAleatorio = Math.floor(Math.random() * palavras.length);
+    var palavraEDica = palavras[indiceAleatorio];
+    var palavraAleatoria = palavraEDica[0].join(""); // Extrai a palavra aleatória
+    var dica = palavraEDica[1]; // Extrai a dica correspondente à palavra
+    console.log("Palavra aleatória: " + palavraAleatoria);
+
+    // Inicialização da palavra misteriosa e das letras descobertas
+    var palavraMisteriosa = palavraAleatoria;
+    var letrasDescobertas = [];
+
+    // Inicializando letrasDescobertas com espaços em branco "_" que representa a letra ainda não descoberta.
+    for (var posicao = 0; posicao < palavraMisteriosa.length; posicao++) {
+        letrasDescobertas.push("_");
+    }
+
+    console.log(letrasDescobertas); // Verifica se as letras foram inicializadas corretamente
+
+    // Função para verificar se a letra está na palavra
+    function verificarLetra() {
+        var letra = document.getElementById("entradaDaLetra").value.toLowerCase();
+        var encontrada = false;
+
+        for (var i = 0; i < palavraMisteriosa.length; i++) {
+            if (palavraMisteriosa[i] === letra) {
+                letrasDescobertas[i] = letra;
+                encontrada = true;
+            }
+        }
+
+        atualizarPalavraDescoberta();
+
+        if (encontrada) {
+            document.getElementById("mensagem").innerHTML = "A letra <strong> '" + letra + "' </strong> está na palavra!";
+        } else {
+            document.getElementById("mensagem").innerHTML = "A letra <strong> '" + letra + "' </strong> não está na palavra.";
+        }
+
+        // Verificar se todas as letras foram descobertas
+        if (letrasDescobertas.indexOf("_") === -1) {
+            document.getElementById("mensagem").innerHTML = "PARABÉNS!! Você adivinhou a palavra!";
+        }
+    }
+
+    // Função para chutar a palavra completa
+    function chutarPalavra() {
+        var palavraChutada = document.getElementById("chutarPalavra").value.toLowerCase();
+        
+        if (palavraChutada === palavraMisteriosa) {
+            document.getElementById("mensagem").innerText = "PARABÉNS!! Você acertou a palavra!";
+        } else {
+            document.getElementById("mensagem").innerText = "ERROUUUUU!! Tente novamente.";
+        }
+    }
+
+    // Função para atualizar a exibição da palavra descoberta na tela
+    function atualizarPalavraDescoberta() {
+        document.getElementById("palavraDescoberta").innerText = letrasDescobertas.join(" ");
+    }
+
+    // Exibir palavra inicialmente
+    atualizarPalavraDescoberta();
+
+    // Exibir a dica
+    document.getElementById("dica").innerHTML = "Dica: <strong> " + dica;
+</script>
+</body>
+</html>
