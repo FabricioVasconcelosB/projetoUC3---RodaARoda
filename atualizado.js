@@ -24,6 +24,7 @@
         [['p','a','p','e','l'], ['Escrita']],
         [['v','e','r','m','e','l','h','o'], ['Cor']],
         [['c','o','r','a','ç','a','o'], ['Amor']]
+        [['','','','','','','','']]
     ];
     // Escolha aleatória de uma palavra e sua dica
     var indiceAleatorio = Math.floor(Math.random() * palavras.length);
@@ -97,3 +98,8 @@
 
     // Exibir a dica
     document.getElementById("dica").innerText = "Dica: " + dica;
+
+
+    function reiniciar(){
+        window.location.reload();
+}
